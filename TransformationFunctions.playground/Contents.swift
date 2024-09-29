@@ -43,9 +43,17 @@ print(flattenedArray)
 
 let optionalString: String? = "123"
 let result2 = optionalString.flatMap { Int($0) }
-print(result2)
+print(result2 as Any)
 
 let nilString: String? = nil
 let nilResult = nilString.flatMap { Int($0) }
-print(nilResult)
+print(nilResult as Any)
+
+// Функция mapValues позволяет преобразовать значения в словаре, применяя заданную операцию к каждому значению, при этом ключи остаются неизменными. Это полезно, когда вам нужно изменить только значения в словаре, не трогая его структуру.
+
+var multiply = ["first": 1, "second": 2, "third": 3]
+// Умножаем каждое значение на 2
+var result = multiply.mapValues({ $0 * 2 })
+print(result)
+
 

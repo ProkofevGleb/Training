@@ -27,3 +27,14 @@ if let firstEven = numbers.first(where: { $0 % 2 == 0 }) {
 } else {
     print("Четные числа не найдены.")
 }
+
+// Функция  lastIndex(where:) (другие языки last(where:)) используется для поиска индекса последнего элемента в массиве, который соответствует определенному предикату. Если ни один элемент не соответствует условию, метод возвращает nil.
+
+// let index = array.lastIndex(where: { condition })
+
+// Поиск последнего четного числа в массиве:
+
+let lastNumbers = [2, 4, 6, 8, 10]
+if let lastIndex = lastNumbers.lastIndex(where: { $0 > 5 }) {
+    print(lastNumbers[lastIndex])
+}

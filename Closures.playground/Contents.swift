@@ -52,3 +52,29 @@ print(evenNumbers) // Вывод: [2, 4]
 let add: (Int, Int) -> Int = { $0 + $1 }
 let sum = add(5, 3)
 print(sum)
+
+// Задачи:
+
+//Создайте функцию, которая принимает массив целых чисел и два замыкания:
+//Первое замыкание должно фильтровать числа (например, оставлять только четные).
+//Второе замыкание должно преобразовывать отфильтрованные числа (например, умножать каждое число на 2).
+
+func filterAndTransform(numbers: [Int], filter: (Int) -> Bool, transform: (Int) -> Int) -> [Int] {
+    
+    let filteredNumbers = numbers.filter(filter)
+    
+    let transformedNumbers = filteredNumbers.map(transform)
+    
+    return transformedNumbers
+}
+
+// Замыкание для фильтрации четных чисел
+let isEven: (Int) -> Bool = { $0 % 2 == 0 }
+
+// Замыкание для умножения на 2
+let multiplyByTwo: (Int) -> Int = { $0 * 2 }
+
+// Вызов функции
+let resultTransform = filterAndTransform(numbers: numbers, filter: isEven, transform: multiplyByTwo)
+
+print(resultTransform)

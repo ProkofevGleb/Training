@@ -38,3 +38,8 @@ let lastNumbers = [2, 4, 6, 8, 10]
 if let lastIndex = lastNumbers.lastIndex(where: { $0 > 5 }) {
     print(lastNumbers[lastIndex])
 }
+
+// Функция allSatisfy проверяет, удовлетворяют ли все элементы массива заданному условию. Если все элементы соответствуют условию, метод возвращает true; если хотя бы один элемент не удовлетворяет, возвращается false.
+
+let result = numbers.allSatisfy { $0 > 5 }
+print(result)

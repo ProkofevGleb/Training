@@ -102,5 +102,52 @@ pet3 = nil
 
 // Ожидаем, что деструкторы будут вызваны
 
+// Задача
 
+//Избежание циклов ссылок
+//Описание: Создайте два класса: Parent и Child. Каждый объект Child должен иметь слабую ссылку на своего родителя. Проверьте, что при установке родителя в nil, объекты корректно освобождаются.
 
+class Parent {
+    var name: String
+    var children: [Child] = []
+    
+    init(name: String) {
+        self.name = name
+    }
+    
+    func addChild(name: String) {
+        let child = Child(name: name, parent: self)
+        children.append(child)
+    }
+    
+    deinit {
+        print("Parent \(name) is being deinitialized")
+    }
+}
+
+class Child {
+    var name: String
+    weak var parent: Parent? // Слабая ссылка на родителя
+    
+    init(name: String, parent: Parent) {
+        self.name = name
+        self.parent = parent
+    }
+    
+    deinit {
+        print("Child \(name) is being deinitialized")
+    }
+}
+
+// Создаем экземпляр класса Parent
+var parent: Parent? = Parent(name: "Sandy")
+
+// Добавляем детей к родителю
+parent!.addChild(name: "Patrick")
+parent!.addChild(name: "Emily")
+parent!.addChild(name: "Joanna")
+
+// Устанавливаем родителя в nil, чтобы проверить освобождение памяти
+parent = nil
+
+// Ожидаем, что деструкторы будут вызваны

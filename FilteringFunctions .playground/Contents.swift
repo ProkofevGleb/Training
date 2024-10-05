@@ -43,3 +43,5 @@ if let lastIndex = lastNumbers.lastIndex(where: { $0 > 5 }) {
 
 let result = numbers.allSatisfy { $0 > 5 }
 print(result)
+
+// тест

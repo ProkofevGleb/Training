@@ -45,3 +45,4 @@ let result = numbers.allSatisfy { $0 > 5 }
 print(result)
 
 // тест
+// тест

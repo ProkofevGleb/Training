@@ -151,3 +151,5 @@ parent!.addChild(name: "Joanna")
 parent = nil
 
 // Ожидаем, что деструкторы будут вызваны
+
+// test

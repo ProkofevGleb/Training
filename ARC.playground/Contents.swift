@@ -152,20 +152,5 @@ parent = nil
 
 // Ожидаем, что деструкторы будут вызваны
 
-// test
-// test
-// test
-// test
-// test
-// test
-// test
-// test
-// test
-// test
-// test
-// test
-// test
-// test
-// test
-// test
+
 // test

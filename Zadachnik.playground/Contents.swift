@@ -94,3 +94,5 @@ if animal is Dog {
 } else {
     print("Это не собака.")
 }
+
+// test

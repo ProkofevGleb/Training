@@ -46,7 +46,17 @@ for product in products {
 }
 
 // 3)Напишите различные выражения с приведением типа.
-// приведение типов позволяет вам проверять и преобразовывать типы значений. Это делается с помощью операторов as, as? и as!.
+// приведение типов — это механизм, который позволяет работать с объектами разных типов в рамках одной иерархии классов или преобразовывать значения между различными типами. Приведение типов осуществляется с помощью операторов is, as, as? и as!.
+
+// Оператор is позволяет проверить, является ли объект экземпляром определенного класса или структуры.
+
+let animal: Animal = Dog()
+
+if animal is Dog {
+    print("Это собака.")
+} else {
+    print("Это не собака.")
+}
 
 // Оператор as? используется для безопасного приведения типов, возвращая nil, если приведение не удалось.
 class Animal {}
@@ -85,15 +95,48 @@ for item in items {
     }
 }
 
-// Оператор is позволяет проверить, является ли объект экземпляром определенного класса или структуры.
+// Вычисления с операторами (умножение, деление, сложение, вычитание): создайте консольный калькулятор.
+// Результат вычислений должен быть похож на: «3 + 2 = 5».
 
-let animal: Animal = Dog()
-
-if animal is Dog {
-    print("Это собака.")
-} else {
-    print("Это не собака.")
+// Функция для выполнения вычислений
+func calculate(_ a: Double, _ b: Double, operation: String) -> Double? {
+    switch operation {
+    case "+":
+        return a + b
+    case "-":
+        return a - b
+    case "*":
+        return a * b
+    case "/":
+        return b != 0 ? a / b : nil // Проверка на деление на ноль
+    default:
+        return nil
+    }
 }
 
-// test
-// test
+// Основная программа
+print("Введите первое число:")
+guard let firstInput = readLine(), let firstNumber = Double(firstInput) else {
+    print("Некорректный ввод числа.")
+    exit(1)
+}
+
+print("Введите второе число:")
+guard let secondInput = readLine(), let secondNumber = Double(secondInput) else {
+    print("Некорректный ввод числа.")
+    exit(1)
+}
+
+print("Введите операцию (+, -, *, /):")
+guard let operation = readLine() else {
+    print("Некорректный ввод операции.")
+    exit(1)
+}
+
+// Выполнение вычислений
+if let result = calculate(firstNumber, secondNumber, operation: operation) {
+    print("\(firstNumber) \(operation) \(secondNumber) = \(result)")
+} else {
+    print("Ошибка: некорректная операция или деление на ноль.")
+}
+

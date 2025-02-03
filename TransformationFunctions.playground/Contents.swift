@@ -81,5 +81,62 @@ let students = [
 let resultNum = students.flatMap { $0.grades }
 print(resultNum)
 
+// MARK: - mapValues
+// Transforms the values of a dictionary.
+// Функция возвращает новый словарь, содержащий те же ключи, что и исходный словарь, но с новыми значениями, полученными в результате применения замыкания к каждому из старых значений
 
+// пример
+var multiply = ["first": 1, "second": 2, "third": 3]
+let resultVal = multiply.mapValues({ $0 * 2 })
+print(resultVal) // Вывод: ["first": 2, "second": 4, "third": 6]
+
+// предположим, у вас есть словарь, который хранит имена студентов и их оценки по предмету. Ваша задача — создать новый словарь, в котором оценки будут увеличены на 5 баллов. Однако, если оценка превышает 100, она должна быть обрезана до 100.
+
+var grades = [
+    "Alice": 88,
+    "Bob": 95,
+    "Charlie": 78,
+    "Diana": 99
+]
+
+// конструкция grade in используется в замыканиях для определения параметров, которые передаются в замыкание.
+// grade — это имя параметра, который будет представлять значение, переданное в замыкание (в данном случае это оценка студента).
+// in — ключевое слово, которое отделяет список параметров от тела замыкания. Оно указывает на то, что после этого слова начинается код, который будет выполнен при вызове замыкания.
+
+let updatedGrades = grades.mapValues { grade in
+    let newGrade = grade + 5
+    // Проверяем, превышает ли новая оценка 100
+    if newGrade > 100 {
+        return 100
+    } else {
+        return newGrade
+    }
+}
+
+print(updatedGrades)
+
+//Функция min в Swift используется для определения наименьшего значения из двух или более значений. Она может принимать два или более аргументов и возвращает наименьший из них.
+
+let updatedGrades2 = grades.mapValues { min($0 + 5, 100) }
+
+// задача
+//
+
+let gradesNew: [Any?] = [85, nil, "A", 92, 78, "B", 88]
+
+// Ваша задача — создать новый массив, который будет содержать только действительные оценки, преобразованные в десятичные числа (например, из целых в дробные), и отсортированные по возрастанию.
+
+//let finalGrades = gradesNew.compactMap { grade -> Int? in
+//    if let myGrade = grade, let number = Int(myGrade) {
+//        return grade
+//    }
+//    return nil
+//}
+
+//let validUserNames = users.compactMap { user -> String? in
+//    if let ageString = user["age"], let age = Int(ageString), age > 0 {
+//        return user["name"]
+//    }grade
+//    return nil
+//}
 
